@@ -1,0 +1,5 @@
+-keep class com.android.billingclient.** { *; }
+-keep class com.google.android.gms.ads.** { *; }
+-keep class androidx.camera.** { *; }
+-keep class com.mirrornaturallook.** { *; }
+-keepnames class kotlinx.coroutines.internal.MainDispatcherFactory {}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="gold">#C0A062</color>
+    <color name="gold_dark">#B8962E</color>
+    <color name="gold_light">#D4B878</color>
+    <color name="mirror_dark_bg">#060606</color>
+    <color name="mirror_silver_bg">#C8C8C8</color>
+    <color name="premium_green">#7EC87E</color>
+</resources>

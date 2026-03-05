@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- bg_mirror_dark.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient
+        android:type="radial"
+        android:centerX="0.38"
+        android:centerY="0.32"
+        android:gradientRadius="120%"
+        android:startColor="#1E1E1E"
+        android:endColor="#050505" />
+</shape>

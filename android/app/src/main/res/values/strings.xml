@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mirror — Natural Look</string>
+    <string name="theme_dark">☽  Dark</string>
+    <string name="theme_silver">✦  Silver</string>
+    <string name="watch_ad">Watch ad → 1hr no ads</string>
+    <string name="unlock_premium">Unlock for $5  →</string>
+    <string name="restore_purchase">Restore previous purchase</string>
+</resources>
