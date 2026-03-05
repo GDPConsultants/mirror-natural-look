@@ -13,9 +13,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Show folder structure (for debugging)
-        run: find . -name "gradlew" -o -name "build.gradle" | head -20
-
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
@@ -23,22 +20,31 @@ jobs:
           distribution: 'temurin'
           cache: gradle
 
-      - name: Find gradlew and build
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: '8.4'
+
+      - name: Show repo structure
+        run: find . -name "build.gradle" | head -10
+
+      - name: Find Android project directory
         run: |
-          # Find gradlew wherever it is in the repo
-          GRADLEW=$(find . -name "gradlew" | head -1)
-          echo "Found gradlew at: $GRADLEW"
+          BUILD_FILE=$(find . -name "build.gradle" | grep -v "\.gradle" | head -1)
+          echo "Found build.gradle at: $BUILD_FILE"
+          PROJECT_DIR=$(dirname "$BUILD_FILE")
+          echo "PROJECT_DIR=$PROJECT_DIR" >> $GITHUB_ENV
+          echo "Project directory: $PROJECT_DIR"
 
-          # Get the directory containing gradlew
-          BUILD_DIR=$(dirname "$GRADLEW")
-          echo "Build directory: $BUILD_DIR"
+      - name: Build Debug APK
+        run: |
+          cd $PROJECT_DIR
+          gradle assembleDebug --stacktrace
 
-          # Make executable and build
-          chmod +x "$GRADLEW"
-          cd "$BUILD_DIR"
-          ./gradlew assembleDebug --stacktrace
+      - name: Find APK
+        run: find . -name "*.apk"
 
-      - name: Upload APK artifact
+      - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: mirror-debug
